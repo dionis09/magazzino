@@ -57,21 +57,6 @@ public class WarehouseService {
     }
 
     public void updateWarehouse(long id ,Warehouse warehouse){
-//        Boolean ris=false;
-//        if(warehouse.getQuantity() == 0 || warehouse.getPrice()== null || warehouse.getPrice() ==0
-//                || warehouse.getProduct().getName() == null
-//                || warehouse.getProduct().getName()==""
-//                || warehouse.getProduct().getShortDescription()==null || warehouse.getProduct().getShortDescription()==""
-//                || warehouse.getProduct().getSubcategory().getId()== 0
-//                || warehouse.getProduct().getSubcategory() == null || warehouse.getProduct() == null || warehouse == null) {
-//            ris=true;
-//        }
-//        if(ris){
-//            warehouse.setCodice("eRrrOrE");
-//        }
-//        if(!ris) {
-//            repository.save(warehouse);
-//        }
         Boolean ris2=false;
         Boolean ris=false;
         List<Warehouse> warehouseList = (List<Warehouse>) warehouses();
