@@ -11,7 +11,7 @@
     <input type="text" th:field="${editCategory.name}" required>
     <p>Tassa</p>
     <input type="number" th:field="${editCategory.tax}" value="1.00" min="1.00" required>
-    <button>Salva</button>
+    <button onclick="return confirm('Confermi la modifica(consiglio: controlla di nuovo tutti i campi)?')">Salva</button>
 </form>
 </body>
 </html>

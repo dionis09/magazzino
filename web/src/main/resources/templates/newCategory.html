@@ -10,7 +10,7 @@
     <input type="text" th:field="${category.name}" required>
     <p>Tassa</p>
     <input type="number" th:field="${category.tax}" value="1.00" min="1.00" required>
-    <button>Salva</button>
+    <button  onclick="return confirm('Confermi di voler aggiungere questa categoria(consiglio: controlla di nuovo tutti i campi)?')">Salva</button>
 </form>
 </body>
 </html>

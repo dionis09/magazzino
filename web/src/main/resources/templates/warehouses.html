@@ -17,7 +17,8 @@
         <p>Quantità:
             <span th:text="${warehouse.quantity}"></span></p>
         </p>
-        <a th:href="@{/magazzino/deleteWarehouse/{id} (id= ${warehouse.id})}"><button>X</button></a>
+        <a th:href="@{/magazzino/deleteWarehouse/{id} (id= ${warehouse.id})}"><button type="submit"
+                                                                                      onclick="return confirm('Confermi di volerlo eliminare?')">X</button></a>
         <a th:href="@{/magazzino/putWarehouse/{id} (id= ${warehouse.id})}"><button>Modifica Prodotto</button></a>
     </li>
 </ul>

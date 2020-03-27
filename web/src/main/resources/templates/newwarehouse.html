@@ -20,7 +20,8 @@
     <input type="number" th:field="${warehouse.price}" min="0" required>
     <p>Quantità</p>
     <input type="number" th:field="${warehouse.quantity}" min="1" required>
-    <button>Salva</button>
+    <button  type="submit"
+             onclick="return confirm('Confermare la aggiunta del prodotto(consiglio: controlla di nuovo tutti i campi)?')">Salva</button>
 </form>
 </body>
 </html>

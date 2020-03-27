@@ -17,7 +17,8 @@
             <span th:text="${warehouse.product.subcategory.category.name}"></span></p>
         <p>sottocategoria:
             <span th:text="${warehouse.product.subcategory.name}"></span></p>
-        <a th:href="@{/magazzino/deleteWarehouse/{id} (id= ${warehouse.id})}"><button>X</button></a>
+        <a th:href="@{/magazzino/deleteWarehouse/{id} (id= ${warehouse.id})}"><button type="submit"
+                                                                                      onclick="return confirm('Confermi di volerlo eliminare?')">X</button></a>
     </li>
 </ul>
 </body>

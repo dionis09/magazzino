@@ -4,11 +4,13 @@ import com.rgi.dao.category.CategoryRepository;
 import com.rgi.model.category.Category;
 
 import com.rgi.model.product.Product;
+import com.rgi.model.warehouse.Warehouse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -28,7 +30,19 @@ public class CategoryService {
 
 
     public void addCategory(Category category) {
-        repository.save(category);
+        Boolean ris=false;
+        List<Category> categoryList = (List<Category>) categories();
+        for(Category cat : categoryList){
+            if(cat.getName().equalsIgnoreCase(category.getName())){
+               ris=true;
+            }
+        }
+        if(!ris){
+            repository.save(category);
+        }
+        if(ris){
+            category.setName("a");
+        }
     }
 
     public void updateCategory(long id , Category category){

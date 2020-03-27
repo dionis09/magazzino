@@ -22,7 +22,8 @@
     <input type="number" th:field="${modifyWarehouse.price}" min="0" required>
     <p>Quantità</p>
     <input type="number" th:field="${modifyWarehouse.quantity}" min="1" required>
-    <button>Salva</button>
+    <button  type="submit"
+             onclick="return confirm('Confermi la modifica(consiglio: controlla di nuovo tutti i campi)?')">Salva</button>
 </form>
 </body>
 </html>

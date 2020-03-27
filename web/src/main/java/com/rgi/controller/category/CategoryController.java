@@ -57,8 +57,11 @@ public class CategoryController {
     @PostMapping("/newCategory")
     public String newCategory(@ModelAttribute Category category, Model model){
         catService.addCategory(category);
-        model.addAttribute("categories",catService.categories());
-        return "categories";
+        if(!category.getName().equalsIgnoreCase("a")){
+            model.addAttribute("categories",catService.categories());
+            return "categories";
+        }
+        return"errore";
     }
 
 

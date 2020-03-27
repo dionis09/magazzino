@@ -16,7 +16,8 @@
                 <span th:text="${cat.name}"></span>
             </option>
         </select>
-    <button>Salva</button>
+    <button  type="submit"
+             onclick="return confirm('Confermi la modifica(consiglio: controlla di nuovo tutti i campi)?')">Salva</button>
 </form>
 </body>
 </html>
