@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifica Categoria</title>
+</head>
+<body>
+<form th:action="@{/magazzino/putCategory}"  th:object="${editCategory}" method="post">
+    <input type="hidden" th:field="${editCategory.id}">
+    <p>Nome</p>
+    <input type="text" th:field="${editCategory.name}" required>
+    <p>Tassa</p>
+    <input type="number" th:field="${editCategory.tax}" value="1.00" min="1.00" required>
+    <button>Salva</button>
+</form>
+</body>
+</html>

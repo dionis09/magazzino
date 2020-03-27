@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Subcategory</title>
+</head>
+<body>
+<b>LISTA SOTTOCATEGORIE</b> &nbsp; <a th:href="@{/magazzino}"><button>HOME</button></a>
+<ul>
+    <li th:each="subcategory : ${subcategories}">
+        <p>Id:
+            <span th:text="${subcategory.id}"></span></p>
+        <p>Nome:
+            <span th:text="${subcategory.name}"></span></p>
+        <p> Descrizione:
+            <span th:text="${subcategory.description}"></span></p>
+        <p>Category:
+            <span th:text="${subcategory.category.name}"></span>
+        </p>
+        <a th:href="@{/magazzino/deleteSubcategory/{id} (id= ${subcategory.id})}"><button>X</button></a>
+        <a th:href="@{/magazzino/putSubcategory/{id} (id= ${subcategory.id})}"><button>Modifica Sottocategoria</button></a>
+    </li>
+</ul>
+<a th:href="@{/magazzino/newsubcategory}"><button>Aggiungi una nuova sottocategoria</button></a>
+</body>
+</html>

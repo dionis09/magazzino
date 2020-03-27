@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista categorie</title>
+</head>
+<b>LISTA CATEGORIE</b>  &nbsp; <a th:href="@{/magazzino}"><button>HOME</button></a>
+    <ul>
+        <li th:each="category : ${categories}">
+            <p>Id
+            <span th:text ="${category.id}"></span></p>
+            <p>Nome
+            <span th:text="${category.name}"></span></p>
+            <p>tax
+            <span th:text="${category.tax}" ></span></p>
+            <a th:href="@{/magazzino/delete/category/{id} (id= ${category.id})}"><button>X</button></a>
+            <a th:href="@{/magazzino/putCategory/{id} (id= ${category.id})}"><button>Modifica Categoria</button></a>
+        </li>
+    </ul>
+        <a th:href="@{/magazzino/newCategory}"><button>Aggiungi una nuova categoria</button></a>
+</body>
+</html>

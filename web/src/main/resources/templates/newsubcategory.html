@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuova Subcategory</title>
+</head>
+<body>
+<form th:action="@{/magazzino/newsubcategory}" th:object="${subcategory}" method="post">
+    <p>Nome</p>
+    <input type="text" th:field="${subcategory.name}" required>
+    <p>Descrizione</p>
+    <input type="text" th:field="${subcategory.description}" required>
+    <select th:field="*{category.id}">
+        <option th:each="cat : ${categories}" th:value="${cat.id}">
+            <span th:text="${cat.name}"></span>
+        </option>
+    </select>
+    <button>Salva</button>
+</form>
+</body>
+</html>

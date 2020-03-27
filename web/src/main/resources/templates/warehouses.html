@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista prodotti in magazzino</title>
+</head>
+<body>
+<b>LISTA PRODOTTI IN MAGAZZINO</b> &nbsp;
+<a th:href="@{/magazzino}"><button>HOME</button></a>
+<a th:href="@{/magazzino/products}"><button>DETTAGLI PRODOTTI</button></a>
+<ul>
+    <li th:each="warehouse : ${warehouses}">
+        <p>Nome:
+            <span th:text="${warehouse.product.name}"></span></p>
+        <p> Prezzo:
+            <span th:text="${warehouse.price}"></span></p>
+        <p>Quantità:
+            <span th:text="${warehouse.quantity}"></span></p>
+        </p>
+        <a th:href="@{/magazzino/deleteWarehouse/{id} (id= ${warehouse.id})}"><button>X</button></a>
+        <a th:href="@{/magazzino/putWarehouse/{id} (id= ${warehouse.id})}"><button>Modifica Prodotto</button></a>
+    </li>
+</ul>
+<a th:href="@{/magazzino/newwarehouse}"><button>AGGIORNA LISTA PRODOTTI</button></a>
+</body>
+</html>

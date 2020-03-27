@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AGGIORNA LISTA PRODOTTI</title>
+</head>
+<body>
+<form th:action="@{/magazzino/newwarehouse}" th:object="${warehouse}" method="post">
+    <p>Nome</p>
+    <input type="text" th:field="${warehouse.product.name}"  required>
+    <p>Descrizione </p>
+    <input type="text" th:field="${warehouse.product.shortDescription}"  required><br>
+    <p>Sottocategoria </p>
+    <select th:field="*{product.subcategory.id}">
+        <option th:each="cat : ${subcategories}" th:value="${cat.id}">
+            <span th:text="${cat.name}"></span>
+        </option>
+    </select>
+    <p>Prezzo</p>
+    <input type="number" th:field="${warehouse.price}" min="0" required>
+    <p>Quantità</p>
+    <input type="number" th:field="${warehouse.quantity}" min="1" required>
+    <button>Salva</button>
+</form>
+</body>
+</html>

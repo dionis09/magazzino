@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifica il prodotto</title>
+</head>
+<body>
+<form th:action="@{/magazzino/put}"  th:object="${modifyProduct}" method="post">
+    <input type="hidden" th:field="${modifyProduct.id}" required>
+    <p>Nome</p>
+    <input type="text" th:field="${modifyProduct.name}" required>
+    <p>Descrizione</p>
+    <input type="text" th:field="${modifyProduct.shortDescription}" required>
+    <select th:field="*{subcategory.id}">
+        <option th:each="cat : ${subcategories}" th:value="${cat.id}">
+            <span th:text="${cat.name}"></span>
+        </option>
+    </select>
+    <button>Salva</button>
+</form>
+</body>
+</html>

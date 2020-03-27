@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Prodotti</title>
+</head>
+<body>
+<b>LISTA PRODOTTI</b> &nbsp; <a th:href="@{/magazzino}"><button>HOME</button></a>
+<a th:href="@{/magazzino/warehouses}"><button>MAGAZZINO</button></a>
+<ul>
+    <li th:each="warehouse : ${warehouses}">
+        <p>Nome:
+            <span th:text="${warehouse.product.name}"></span></p>
+        <p> Descrizione:
+            <span th:text="${warehouse.product.shortDescription}"></span></p>
+        <p>categoria:
+            <span th:text="${warehouse.product.subcategory.category.name}"></span></p>
+        <p>sottocategoria:
+            <span th:text="${warehouse.product.subcategory.name}"></span></p>
+        <a th:href="@{/magazzino/deleteWarehouse/{id} (id= ${warehouse.id})}"><button>X</button></a>
+    </li>
+</ul>
+</body>
+</html>

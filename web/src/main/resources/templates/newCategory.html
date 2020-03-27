@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aggiungi una nuova categoria</title>
+</head>
+<body>
+<form th:action="@{/magazzino/newCategory}" th:object="${category}" method="post">
+    <p>Nome</p>
+    <input type="text" th:field="${category.name}" required>
+    <p>Tassa</p>
+    <input type="number" th:field="${category.tax}" value="1.00" min="1.00" required>
+    <button>Salva</button>
+</form>
+</body>
+</html>
