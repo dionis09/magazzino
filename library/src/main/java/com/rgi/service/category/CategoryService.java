@@ -44,15 +44,12 @@ public class CategoryService {
             category.setName("a");
         }
     }
-
     public void updateCategory(long id , Category category){
         category.setId(id);
         repository.save(category);
     }
-
     public void deleteCategory(long id){
         Optional<Category> category= repository.findById(id);
         category.ifPresent(value -> repository.delete(value));
     }
-
 }

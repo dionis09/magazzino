@@ -52,8 +52,11 @@ public class SubcategoryController {
         Category newCategory = catService.category(subcategory.getCategory().getId()).orElse(null);
         subcategory.setCategory(newCategory);
         service.addSubcategory(subcategory);
-        model.addAttribute("subcategories",service.subcategories());
-        return "subcategories";
+        if(!subcategory.getName().equalsIgnoreCase("a")){
+            model.addAttribute("subcategories",service.subcategories());
+            return "subcategories";
+        }
+        return"errore";
     }
     @GetMapping("/putSubcategory/{id}")
     public String modifySubcategory(@PathVariable long id, Model model){
@@ -68,5 +71,4 @@ public class SubcategoryController {
         model.addAttribute("subcategories",service.subcategories());
         return "subcategories";
     }
-
 }

@@ -31,23 +31,72 @@ public class WarehouseService {
 
     public void addWarehouse(Warehouse warehouse){
         Boolean ris=false;
+        Boolean ris2=false;
         List<Warehouse> warehouseList = (List<Warehouse>) warehouses();
         for(Warehouse ware : warehouseList){
             if(ware.getProduct().getName().equalsIgnoreCase(warehouse.getProduct().getName()) &&
-                    ware.getProduct().getShortDescription().equalsIgnoreCase(warehouse.getProduct().getShortDescription())){
-                         ware.setQuantity(ware.getQuantity()+warehouse.getQuantity());
-                         ris=true;
+                    ware.getProduct().getShortDescription().equalsIgnoreCase(warehouse.getProduct().getShortDescription()) &&
+                    ware.getProduct().getSubcategory().getId() == (warehouse.getProduct().getSubcategory().getId())){
+                ware.setQuantity(ware.getQuantity()+warehouse.getQuantity());
+                ris=true;
                 repository.save(ware);
             }
         }
-        if(!ris){
-                repository.save(warehouse);
+        if(warehouse.getQuantity() == 0 || warehouse.getPrice()== null || warehouse.getPrice() ==0
+                || warehouse.getProduct().getName() == null
+                || warehouse.getProduct().getName()==""
+                || warehouse.getProduct().getShortDescription()==null || warehouse.getProduct().getShortDescription()==""
+                || warehouse.getProduct().getSubcategory().getId()== 0
+                || warehouse.getProduct().getSubcategory() == null || warehouse.getProduct() == null || warehouse == null) {
+            warehouse.setCodice("eRrrOrE");
+            ris2=true;
+        }
+        if(!ris && !ris2){
+            repository.save(warehouse);
         }
     }
 
     public void updateWarehouse(long id ,Warehouse warehouse){
-        warehouse.setId(id);
-        repository.save(warehouse);
+//        Boolean ris=false;
+//        if(warehouse.getQuantity() == 0 || warehouse.getPrice()== null || warehouse.getPrice() ==0
+//                || warehouse.getProduct().getName() == null
+//                || warehouse.getProduct().getName()==""
+//                || warehouse.getProduct().getShortDescription()==null || warehouse.getProduct().getShortDescription()==""
+//                || warehouse.getProduct().getSubcategory().getId()== 0
+//                || warehouse.getProduct().getSubcategory() == null || warehouse.getProduct() == null || warehouse == null) {
+//            ris=true;
+//        }
+//        if(ris){
+//            warehouse.setCodice("eRrrOrE");
+//        }
+//        if(!ris) {
+//            repository.save(warehouse);
+//        }
+        Boolean ris2=false;
+        Boolean ris=false;
+        List<Warehouse> warehouseList = (List<Warehouse>) warehouses();
+        for(Warehouse ware : warehouseList){
+            if(ware.getProduct().getName().equalsIgnoreCase(warehouse.getProduct().getName()) &&
+                    ware.getProduct().getShortDescription().equalsIgnoreCase(warehouse.getProduct().getShortDescription()) &&
+                    ware.getProduct().getSubcategory().getId() == (warehouse.getProduct().getSubcategory().getId())){
+                ware.setQuantity(ware.getQuantity()+warehouse.getQuantity());
+                ris=true;
+                repository.save(ware);
+            }
+        }
+        if(warehouse.getQuantity() == 0 || warehouse.getPrice()== null || warehouse.getPrice() ==0
+                || warehouse.getProduct().getName() == null
+                || warehouse.getProduct().getName()==""
+                || warehouse.getProduct().getShortDescription()==null || warehouse.getProduct().getShortDescription()==""
+                || warehouse.getProduct().getSubcategory().getId()== 0
+                || warehouse.getProduct().getSubcategory() == null || warehouse.getProduct() == null || warehouse == null) {
+            warehouse.setCodice("eRrrOrE");
+            ris2=true;
+        }
+        if(ris && !ris2){
+            warehouse.setId(id);
+            repository.save(warehouse);
+        }
     }
 
     public void deleteWarehouse(long id){

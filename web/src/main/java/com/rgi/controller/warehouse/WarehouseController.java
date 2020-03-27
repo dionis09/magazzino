@@ -57,11 +57,15 @@ public class WarehouseController {
     public String newwarehouse(@ModelAttribute Warehouse warehouse, Model model){
         prodService.addProduct(warehouse.getProduct());
         service.addWarehouse(warehouse);
-        model.addAttribute("products",prodService.products());
-        model.addAttribute("categories",categoryService.categories());
-        model.addAttribute("subcategories",catService.subcategories());
-        model.addAttribute("warehouses",service.warehouses());
-        return "warehouses";
+        if(warehouse.getCodice().equalsIgnoreCase("eRrrOrE")){
+            return"campiVuoti";
+        }else{
+            model.addAttribute("products",prodService.products());
+            model.addAttribute("categories",categoryService.categories());
+            model.addAttribute("subcategories",catService.subcategories());
+            model.addAttribute("warehouses",service.warehouses());
+            return "warehouses";
+        }
     }
 
     @GetMapping("/putWarehouse/{id}")
@@ -77,8 +81,12 @@ public class WarehouseController {
     public String modifyWare(@ModelAttribute Warehouse warehouse, Model model ){
         prodService.updateProduct(warehouse.getProduct().getId(),warehouse.getProduct());
         service.updateWarehouse(warehouse.getId(),warehouse);
-        model.addAttribute("warehouses",service.warehouses());
-        return "warehouses";
+        if(warehouse.getCodice().equalsIgnoreCase("eRrrOrE")){
+            return"campiVuotiModifica";
+        }else{
+            model.addAttribute("warehouses", service.warehouses());
+            return "warehouses";
+        }
     }
     @GetMapping("/help")
     public String help(Model model){
@@ -91,5 +99,13 @@ public class WarehouseController {
     @GetMapping("/bottoni")
     public String fnBottoni(Model model){
         return "bottoni";
+    }
+    @GetMapping("/campiVuoti")
+    public String campiVuoti(Model model){
+        return "campiVuoti";
+    }
+    @GetMapping("/regole")
+    public String regole(Model model){
+        return "regole";
     }
 }

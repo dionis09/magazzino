@@ -2,6 +2,7 @@ package com.rgi.service.subcategory;
 
 import com.rgi.dao.product.ProductRepository;
 import com.rgi.dao.subcategory.SubcategoryRepository;
+import com.rgi.model.category.Category;
 import com.rgi.model.product.Product;
 import com.rgi.model.subcategory.Subcategory;
 import com.rgi.model.warehouse.Warehouse;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,7 +33,20 @@ public class SubcategoryService {
 
 
     public void addSubcategory(Subcategory subcategory){
-        repository.save(subcategory);
+        Boolean ris=false;
+        List<Subcategory> subcategoryList = (List<Subcategory>) subcategories();
+        for(Subcategory subcat : subcategoryList){
+            if (subcat.getName().equalsIgnoreCase(subcategory.getName())) {
+                ris = true;
+                break;
+            }
+        }
+        if(!ris){
+            repository.save(subcategory);
+        }
+        if(ris){
+            subcategory.setName("a");
+        }
     }
 
     public void updateSubcategory(long id ,Subcategory subcategory){

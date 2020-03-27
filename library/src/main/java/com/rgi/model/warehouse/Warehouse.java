@@ -14,11 +14,20 @@ public class Warehouse {
     private long id;
     private Double price;
     private int quantity;
+    private String codice="";
 
     @OneToOne()
     @JoinColumn(name= "product_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Product product;
+
+    public String getCodice() {
+        return codice;
+    }
+
+    public void setCodice(String codice) {
+        this.codice = codice;
+    }
 
     public Double getPrice() {
         return price;
