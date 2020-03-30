@@ -17,9 +17,16 @@ public class Category {
     private long id;
     private String name;
     private float tax;
+    private String codice="";
 
 
+    public String getCodice() {
+        return codice;
+    }
 
+    public void setCodice(String codice) {
+        this.codice = codice;
+    }
 
     public long getId() {
         return id;

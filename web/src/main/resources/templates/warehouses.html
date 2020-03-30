@@ -5,20 +5,21 @@
     <title>Lista prodotti in magazzino</title>
 </head>
 <body>
-<b>LISTA PRODOTTI IN MAGAZZINO</b> &nbsp;
+<center><b><i>LISTA PRODOTTI IN MAGAZZINO</i></b> &nbsp;
 <a th:href="@{/magazzino}"><button>HOME</button></a>
-<a th:href="@{/magazzino/products}"><button>DETTAGLI PRODOTTI</button></a>
+<a th:href="@{/magazzino/products}"><button>DETTAGLI PRODOTTI</button></a></center> <br>
+<p align="right">Ricerca per:  <input type="text"><button type="submit">Cerca</button>
+<h4>Lista:</h4>
 <ul>
     <li th:each="warehouse : ${warehouses}">
-        <p>Nome:
-            <span th:text="${warehouse.product.name}"></span></p>
-        <p> Prezzo:
-            <span th:text="${warehouse.price}"></span></p>
-        <p>Quantità:
-            <span th:text="${warehouse.quantity}"></span></p>
-        </p>
+        <b>Nome:</b>
+            <span th:text="${warehouse.product.name}"></span>
+        <b>Prezzo:</b>
+            <span th:text="${warehouse.price}"></span>
+        <b>Quantità:</b>
+            <span th:text="${warehouse.quantity}"></span>
         <a th:href="@{/magazzino/deleteWarehouse/{id} (id= ${warehouse.id})}"><button type="submit"
-                                                                                      onclick="return confirm('Confermi di volerlo eliminare?')">X</button></a>
+                    onclick="return confirm('Confermi di volerlo eliminare?')">X</button></a>
         <a th:href="@{/magazzino/putWarehouse/{id} (id= ${warehouse.id})}"><button>Modifica Prodotto</button></a>
     </li>
 </ul>

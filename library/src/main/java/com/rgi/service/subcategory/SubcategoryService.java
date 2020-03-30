@@ -34,6 +34,7 @@ public class SubcategoryService {
 
     public void addSubcategory(Subcategory subcategory){
         Boolean ris=false;
+        boolean ris2=false;
         List<Subcategory> subcategoryList = (List<Subcategory>) subcategories();
         for(Subcategory subcat : subcategoryList){
             if (subcat.getName().equalsIgnoreCase(subcategory.getName())) {
@@ -41,17 +42,43 @@ public class SubcategoryService {
                 break;
             }
         }
-        if(!ris){
+        if(subcategory.getName() == null ||subcategory.getName()=="" ||subcategory.getDescription()==""
+                || subcategory.getCategory() == null || subcategory.getDescription()==null){
+            subcategory.setCodice("eRrrOrE");
+            ris2=true;
+        }else{
+            subcategory.setCodice("ok");
+        }
+        if(!ris && !ris2){
             repository.save(subcategory);
         }
         if(ris){
-            subcategory.setName("a");
+            subcategory.setCodice("a");
         }
     }
 
     public void updateSubcategory(long id ,Subcategory subcategory){
-        subcategory.setId(id);
-        repository.save(subcategory);
+        boolean ris2=false;
+        boolean ris= false;
+        List<Subcategory> subcategoryList = (List<Subcategory>) subcategories();
+        for(Subcategory subcat : subcategoryList){
+            if (subcat.getName().equalsIgnoreCase(subcategory.getName())) {
+                ris = true;
+                break;
+            }
+        }
+        if(subcategory.getId() == 0 || subcategory.getName() == null || subcategory.getCategory() == null
+                || subcategory.getDescription()==null || subcategory.getCategory().getName()== null
+                || subcategory.getCategory().getId() == 0 || subcategory.getCategory().getTax() == 0){
+            subcategory.setCodice("eRrrOrE");
+            ris2=true;
+        }else{
+            subcategory.setCodice("ok");
+        }
+        if(!ris2 && !ris){
+            subcategory.setId(id);
+            repository.save(subcategory);
+        }
     }
 
     public void deleteSubcategory(long id){

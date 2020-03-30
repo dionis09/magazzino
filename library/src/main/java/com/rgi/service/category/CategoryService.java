@@ -31,13 +31,20 @@ public class CategoryService {
 
     public void addCategory(Category category) {
         Boolean ris=false;
+        Boolean ris2=false;
         List<Category> categoryList = (List<Category>) categories();
         for(Category cat : categoryList){
             if(cat.getName().equalsIgnoreCase(category.getName())){
                ris=true;
             }
         }
-        if(!ris){
+        if(category.getTax()==0 || category.getName() == null || category.getName() == ""){
+            category.setCodice("eRrrOrE");
+            ris2=true;
+        }else{
+            category.setCodice("ok");
+        }
+        if(!ris && !ris2){
             repository.save(category);
         }
         if(ris){
@@ -45,8 +52,28 @@ public class CategoryService {
         }
     }
     public void updateCategory(long id , Category category){
-        category.setId(id);
-        repository.save(category);
+        boolean ris2=false;
+        boolean ris = false;
+        List<Category> categoryList = (List<Category>) categories();
+        for(Category cat : categoryList){
+            if(cat.getName().equalsIgnoreCase(category.getName())){
+                ris=true;
+                category.setCodice("a");
+            }
+        }
+        if(category.getTax()==0 || category.getName() == null || category.getName() == ""){
+            category.setCodice("eRrrOrE");
+            ris2=true;
+        }
+        if(!ris){
+            category.setCodice("ok");
+        }
+
+        if(!ris2 && !ris){
+            category.setId(id);
+            repository.save(category);
+        }
+
     }
     public void deleteCategory(long id){
         Optional<Category> category= repository.findById(id);

@@ -5,20 +5,22 @@
     <title>Lista Prodotti</title>
 </head>
 <body>
-<b>LISTA PRODOTTI</b> &nbsp; <a th:href="@{/magazzino}"><button>HOME</button></a>
-<a th:href="@{/magazzino/warehouses}"><button>MAGAZZINO</button></a>
+<center>
+<b><i>LISTA PRODOTTI</i></b>
+&nbsp;<a th:href="@{/magazzino}"><button>HOME</button></a>
+<a th:href="@{/magazzino/warehouses}"><button>MAGAZZINO</button></a></center>
 <ul>
     <li th:each="warehouse : ${warehouses}">
-        <p>Nome:
-            <span th:text="${warehouse.product.name}"></span></p>
-        <p> Descrizione:
-            <span th:text="${warehouse.product.shortDescription}"></span></p>
-        <p>categoria:
-            <span th:text="${warehouse.product.subcategory.category.name}"></span></p>
-        <p>sottocategoria:
-            <span th:text="${warehouse.product.subcategory.name}"></span></p>
+        <b>Nome:</b>
+            <span th:text="${warehouse.product.name}"></span>
+        <b>Descrizione:</b>
+            <span th:text="${warehouse.product.shortDescription}"></span>
+        <b>Categoria:</b>
+            <span th:text="${warehouse.product.subcategory.category.name}"></span>
+        <b>Sottocategoria:</b>
+            <span th:text="${warehouse.product.subcategory.name}"></span>
         <a th:href="@{/magazzino/deleteWarehouse/{id} (id= ${warehouse.id})}"><button type="submit"
-                                                                                      onclick="return confirm('Confermi di volerlo eliminare?')">X</button></a>
+                     onclick="return confirm('Confermi di volerlo eliminare?')">X</button></a>
     </li>
 </ul>
 </body>

@@ -5,18 +5,15 @@
     <title>List Subcategory</title>
 </head>
 <body>
-<b>LISTA SOTTOCATEGORIE</b> &nbsp; <a th:href="@{/magazzino}"><button>HOME</button></a>
+<center><b><i>LISTA SOTTOCATEGORIE</i></b> &nbsp; <a th:href="@{/magazzino}"><button>HOME</button></a></center>
 <ul>
     <li th:each="subcategory : ${subcategories}">
-        <p>Id:
-            <span th:text="${subcategory.id}"></span></p>
-        <p>Nome:
-            <span th:text="${subcategory.name}"></span></p>
-        <p> Descrizione:
-            <span th:text="${subcategory.description}"></span></p>
-        <p>Category:
+        <b>Nome:</b>
+            <span th:text="${subcategory.name}"></span>
+        <b>Descrizione:</b>
+            <span th:text="${subcategory.description}"></span>
+        <b>Category:</b>
             <span th:text="${subcategory.category.name}"></span>
-        </p>
         <a th:href="@{/magazzino/deleteSubcategory/{id} (id= ${subcategory.id})}"><button type="submit"
             onclick="return confirm('Confermi di volerlo eliminare?')">X</button></a>
         <a th:href="@{/magazzino/putSubcategory/{id} (id= ${subcategory.id})}"><button>Modifica Sottocategoria</button></a>

@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <title>Lista categorie</title>
 </head>
-<b>LISTA CATEGORIE</b>  &nbsp; <a th:href="@{/magazzino}"><button>HOME</button></a>
+<center><b><i>LISTA CATEGORIE</i></b>  &nbsp; <a th:href="@{/magazzino}"><button>HOME</button></a></center>
     <ul>
         <li th:each="category : ${categories}">
-            <p>Nome
-            <span th:text="${category.name}"></span></p>
-            <p>tax
-            <span th:text="${category.tax}" ></span></p>
+            <b>Nome:</b>
+            <span th:text="${category.name}"></span>
+            <b>Tax:</b>
+            <span th:text="${category.tax}" ></span>
             <a th:href="@{/magazzino/delete/category/{id} (id= ${category.id})}"><button type="submit"
-                                                                                         onclick="return confirm('Confermi di volerlo eliminare?')">X</button></a>
+                        onclick="return confirm('Confermi di volerlo eliminare?')">X</button></a>
             <a th:href="@{/magazzino/putCategory/{id} (id= ${category.id})}"><button>Modifica Categoria</button></a>
         </li>
     </ul>
         <a th:href="@{/magazzino/newCategory}"><button>Aggiungi una nuova categoria</button></a>
-
 </body>
 </html>

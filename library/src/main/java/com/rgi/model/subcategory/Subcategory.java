@@ -13,15 +13,25 @@ public class Subcategory {
     private long id;
     private String name;
     private String description;
+    private String codice="";
 
     @OneToOne()
     @JoinColumn(name= "category_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Category category;
 
+    public String getCodice() {
+        return codice;
+    }
+
+    public void setCodice(String codice) {
+        this.codice = codice;
+    }
+
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
     }

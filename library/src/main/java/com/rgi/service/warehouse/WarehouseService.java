@@ -42,6 +42,7 @@ public class WarehouseService {
                 repository.save(ware);
             }
         }
+
         if(warehouse.getQuantity() == 0 || warehouse.getPrice()== null || warehouse.getPrice() ==0
                 || warehouse.getProduct().getName() == null
                 || warehouse.getProduct().getName()==""
@@ -50,6 +51,8 @@ public class WarehouseService {
                 || warehouse.getProduct().getSubcategory() == null || warehouse.getProduct() == null || warehouse == null) {
             warehouse.setCodice("eRrrOrE");
             ris2=true;
+        }else{
+            warehouse.setCodice("ok");
         }
         if(!ris && !ris2){
             repository.save(warehouse);
@@ -64,7 +67,7 @@ public class WarehouseService {
             if(ware.getProduct().getName().equalsIgnoreCase(warehouse.getProduct().getName()) &&
                     ware.getProduct().getShortDescription().equalsIgnoreCase(warehouse.getProduct().getShortDescription()) &&
                     ware.getProduct().getSubcategory().getId() == (warehouse.getProduct().getSubcategory().getId())){
-                ware.setQuantity(ware.getQuantity()+warehouse.getQuantity());
+                ware.setQuantity(ware.getQuantity() + warehouse.getQuantity());
                 ris=true;
                 repository.save(ware);
             }
@@ -78,7 +81,7 @@ public class WarehouseService {
             warehouse.setCodice("eRrrOrE");
             ris2=true;
         }
-        if(ris && !ris2){
+        if(!ris && !ris2){
             warehouse.setId(id);
             repository.save(warehouse);
         }

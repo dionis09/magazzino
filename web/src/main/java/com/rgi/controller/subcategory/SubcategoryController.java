@@ -52,11 +52,15 @@ public class SubcategoryController {
         Category newCategory = catService.category(subcategory.getCategory().getId()).orElse(null);
         subcategory.setCategory(newCategory);
         service.addSubcategory(subcategory);
-        if(!subcategory.getName().equalsIgnoreCase("a")){
+        if(subcategory.getCodice().equalsIgnoreCase("ok")){
             model.addAttribute("subcategories",service.subcategories());
             return "subcategories";
         }
-        return"errore";
+        if(subcategory.getCodice().equalsIgnoreCase("eRrrOrE")){
+            return"campiVuotiSottocategoria";
+        }
+
+        return"erroreSottocat";
     }
     @GetMapping("/putSubcategory/{id}")
     public String modifySubcategory(@PathVariable long id, Model model){
@@ -68,7 +72,13 @@ public class SubcategoryController {
     @PostMapping("/putSubcategory")
     public String modifySubcat(@ModelAttribute Subcategory subcategory,Model model ){
         service.updateSubcategory(subcategory.getId(),subcategory);
+        if(subcategory.getCodice().equalsIgnoreCase("eRrrOrE")){
+            return"campiVuotiModifica";
+        }
+        if(subcategory.getCodice().equalsIgnoreCase("ok")){
         model.addAttribute("subcategories",service.subcategories());
         return "subcategories";
+        }
+        return "erroreSottocat";
     }
 }
