@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/magazzino/putWarehouseEliminaSubcategory}" th:object="${modifyWarehouseEliminaSubcategory}" method="post">
+    <input type="hidden" th:field="${modifyWarehouseEliminaSubcategory.id}">
+    <input type="hidden" th:field="${modifyWarehouseEliminaSubcategory.product.id}">
+    <p>Nome</p>
+    <input type="text" th:field="${modifyWarehouseEliminaSubcategory.product.name}"  required>
+    <p>Descrizione </p>
+    <input type="text" th:field="${modifyWarehouseEliminaSubcategory.product.shortDescription}"  required><br>
+    <p>Sottocategoria </p>
+    <select th:field="*{product.subcategory.id}" >
+        <option th:each="cat : ${subcategories}" th:value="${cat.id}" >
+            <span th:text="${cat.name}"></span>
+        </option>
+    </select>
+    <p>Prezzo</p>
+    <input type="number" th:field="${modifyWarehouseEliminaSubcategory.price}" min="0" required>
+    <p>Quantità</p>
+    <input type="number" th:field="${modifyWarehouseEliminaSubcategory.quantity}" min="1" required>
+    <button  type="submit"
+             onclick="return confirm('Confermi la modifica(consiglio: controlla di nuovo tutti i campi)?')">Salva</button>
+</form>
+</body>
+</html>

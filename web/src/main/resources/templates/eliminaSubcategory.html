@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/magazzino}"><button>HOME</button></a>
+La sottocategoria da te selezionata appartiene ai seguenti prodotti:
+<ul>
+    <li th:each="warehouse : ${listaVuota}">
+        <b>Nome:</b>
+        <span th:text="${warehouse.product.name}"></span>
+        <b>Descrizione:</b>
+        <span th:text="${warehouse.product.shortDescription}"></span>
+        <b>Categoria:</b>
+        <span th:text="${warehouse.product.subcategory.category.name}"></span>
+        <b>Sottocategoria:</b>
+        <span th:text="${warehouse.product.subcategory.name}"></span>
+        <a th:href="@{/magazzino/putWarehouseEliminaSubcategory/{id} (id= ${warehouse.id})}"><button>Modifica Prodotto</button></a>
+    </li>
+</ul>
+Se si vuole procedere con l'eliminazione verrano eliminati anche i prodotti ad essa legata<br>
+altrimenti modificare i prodotti e poi eliminare la sottocategoria
+<ul>
+    <li th:each="subcategory : ${listaVuotaSubcat}">
+        <b>Nome:</b>
+        <span th:text="${subcategory.name}"></span>
+        <b>Descrizione:</b>
+        <span th:text="${subcategory.description}"></span>
+        <b>Category:</b>
+        <span th:text="${subcategory.category.name}"></span>
+        <a th:href="@{/magazzino/deleteSubcategory/{id} (id= ${subcategory.id})}"><button type="submit"
+                     onclick="return confirm('Confermi di volerlo eliminare?')">X</button></a>
+    </li>
+</ul>
+</body>
+</html>

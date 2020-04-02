@@ -14,8 +14,7 @@
             <span th:text="${subcategory.description}"></span>
         <b>Category:</b>
             <span th:text="${subcategory.category.name}"></span>
-        <a th:href="@{/magazzino/deleteSubcategory/{id} (id= ${subcategory.id})}"><button type="submit"
-            onclick="return confirm('Confermi di volerlo eliminare?')">X</button></a>
+        <a th:href="@{/magazzino/elimina/subcat/{id} (id= ${subcategory.id})}"><button>X</button></a>
         <a th:href="@{/magazzino/putSubcategory/{id} (id= ${subcategory.id})}"><button>Modifica Sottocategoria</button></a>
     </li>
 </ul>

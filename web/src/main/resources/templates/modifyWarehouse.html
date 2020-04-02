@@ -12,6 +12,12 @@
     <input type="text" th:field="${modifyWarehouse.product.name}"  required>
     <p>Descrizione </p>
     <input type="text" th:field="${modifyWarehouse.product.shortDescription}"  required><br>
+    <p>Categoria</p>
+    <select th:field="*{product.subcategory.category.id}">
+        <option th:each="cat : ${categories}" th:value="${cat.id}">
+            <span th:text="${cat.name}"></span>
+        </option>
+    </select>
     <p>Sottocategoria </p>
     <select th:field="*{product.subcategory.id}">
         <option th:each="cat : ${subcategories}" th:value="${cat.id}">

@@ -59,6 +59,7 @@ public class CategoryService {
             if(cat.getName().equalsIgnoreCase(category.getName())){
                 ris=true;
                 category.setCodice("a");
+                break;
             }
         }
         if(category.getTax()==0 || category.getName() == null || category.getName() == ""){
@@ -77,6 +78,7 @@ public class CategoryService {
     }
     public void deleteCategory(long id){
         Optional<Category> category= repository.findById(id);
+        
         category.ifPresent(value -> repository.delete(value));
     }
 }

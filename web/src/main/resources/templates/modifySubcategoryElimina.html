@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/magazzino/putSubcategoryElimina}"  th:object="${modifySubcategoryElimina}" method="post">
+    <input type="hidden" th:field="${modifySubcategoryElimina.id}" required>
+    <p>Nome</p>
+    <input type="text" th:field="${modifySubcategoryElimina.name}" required>
+    <p>Descrizione</p>
+    <input type="text" th:field="${modifySubcategoryElimina.description}" required>
+    <select th:field="*{category.id}">
+        <option th:each="cat : ${categories}" th:value="${cat.id}">
+            <span th:text="${cat.name}"></span>
+        </option>
+    </select>
+    <button  type="submit"
+             onclick="return confirm('Confermi la modifica(consiglio: controlla di nuovo tutti i campi)?')">Salva</button>
+</form>
+</body>
+</html>

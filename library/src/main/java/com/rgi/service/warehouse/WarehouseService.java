@@ -40,6 +40,7 @@ public class WarehouseService {
                 ware.setQuantity(ware.getQuantity()+warehouse.getQuantity());
                 ris=true;
                 repository.save(ware);
+                break;
             }
         }
 
@@ -70,6 +71,7 @@ public class WarehouseService {
                 ware.setQuantity(ware.getQuantity() + warehouse.getQuantity());
                 ris=true;
                 repository.save(ware);
+                break;
             }
         }
         if(warehouse.getQuantity() == 0 || warehouse.getPrice()== null || warehouse.getPrice() ==0
