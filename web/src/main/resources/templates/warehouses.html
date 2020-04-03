@@ -8,7 +8,7 @@
 <center><b><i>LISTA PRODOTTI IN MAGAZZINO</i></b> &nbsp;
 <a th:href="@{/magazzino}"><button>HOME</button></a>
 <a th:href="@{/magazzino/products}"><button>DETTAGLI PRODOTTI</button></a></center> <br>
-<p align="right">Ricerca per:  <input type="text"><button type="submit">Cerca</button>
+<p align="right"><a th:href="@{/magazzino/ricerca}"><button>Ricerca</button></a></p>
 <h4>Lista:</h4>
 <ul>
     <li th:each="warehouse : ${warehouses}">

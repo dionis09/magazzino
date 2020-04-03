@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cerca categoria</title>
+</head>
+<body>
+<a th:href="@{/magazzino/ricerca}"><button>◄</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a th:href="@{/magazzino}"><button>HOME</button></a>
+<br><br>
+<h4><b><i>Scegliere la categoria:</i></b></h4>
+<ul>
+    <li th:each="cat : ${categories}">
+        <a th:href="@{/magazzino/categoriaLista/{id} (id= ${cat.id})}"> <span th:text="${cat.name}"></span></a>
+    </li>
+</ul>
+</body>
+</html>

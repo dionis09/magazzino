@@ -67,7 +67,7 @@ public class WarehouseService {
         for(Warehouse ware : warehouseList){
             if(ware.getProduct().getName().equalsIgnoreCase(warehouse.getProduct().getName()) &&
                     ware.getProduct().getShortDescription().equalsIgnoreCase(warehouse.getProduct().getShortDescription()) &&
-                    ware.getProduct().getSubcategory().getId() == (warehouse.getProduct().getSubcategory().getId())){
+                    ware.getProduct().getSubcategory().getId() == (warehouse.getProduct().getSubcategory().getId()) && ware.getId()!=warehouse.getId()){
                 ware.setQuantity(ware.getQuantity() + warehouse.getQuantity());
                 ris=true;
                 repository.save(ware);

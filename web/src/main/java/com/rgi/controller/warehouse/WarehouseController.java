@@ -174,12 +174,11 @@ public class WarehouseController {
     }
     @PostMapping("/putWarehouse")
     public String modifyWare(@ModelAttribute Warehouse warehouse, Model model ){
-        prodService.updateProduct(warehouse.getProduct().getId(),warehouse.getProduct());
+            prodService.updateProduct(warehouse.getProduct().getId(),warehouse.getProduct());
         service.updateWarehouse(warehouse.getId(),warehouse);
         if(warehouse.getCodice().equalsIgnoreCase("eRrrOrE")){
             return"campiVuotiModifica";
         }else{
-            model.addAttribute("warehouses", service.warehouses());
             return "warehouses";
         }
     }
@@ -203,4 +202,34 @@ public class WarehouseController {
     public String regole(Model model){
         return "regole";
     }
+    @GetMapping("/ricerca")
+    public String ricerca(Model model){
+        return "ricerca";
+    }
+    @GetMapping("/cercaCategoria")
+    public String categoria(Model model){
+        List<Category> categoryList=new ArrayList<Category>();
+        categoryList = (List<Category>)categoryService.categories();
+        model.addAttribute("categories",categoryList);
+        return "cercaCategoria";
+    }
+    @GetMapping("/cercaSottocategoria")
+    public String sottocategoria(Model model){
+        return "cercaSottocategoria";
+    }
+
+    @GetMapping("/categoriaLista/{id}")
+    public String categoriaLista(@PathVariable long id, Model model){
+        List<Warehouse> warehouseList=new ArrayList<Warehouse>();
+        warehouseList = (List<Warehouse>)service.warehouses();
+        List<Warehouse> wareVuoto= new ArrayList<>();
+        for(Warehouse ware: warehouseList){
+            if(ware.getProduct().getSubcategory().getCategory().getId() == id){
+                wareVuoto.add(ware);
+            }
+        }
+        model.addAttribute("wareVuoto", wareVuoto);
+        return "categoriaLista";
+    }
+
 }

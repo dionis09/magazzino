@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/magazzino/cercaCategoria}"><button>◄</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a th:href="@{/magazzino}"><button>HOME</button></a><br><br>
+    <h4><b><i>Ecco tutti i prodotti della categoria da te selezionata:</i></b></h4>
+<ul>
+    <li th:each="warehouse : ${wareVuoto}">
+        <b>Nome:</b>
+        <span th:text="${warehouse.product.name}"></span>
+        <b>Prezzo:</b>
+        <span th:text="${warehouse.price}"></span>
+        <b>Quantità:</b>
+        <span th:text="${warehouse.quantity}"></span>
+    </li>
+</ul>
+</body>
+</html>
